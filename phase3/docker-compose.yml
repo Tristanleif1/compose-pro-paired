@@ -1,0 +1,20 @@
+version: "3"
+services:
+  drupal:
+    volumes:
+      - drupal-data:/var/www/html
+    build: 
+      context: .
+    ports:
+      - '8080:80'
+    depends_on: 
+      - 'postgres'
+  postgres:
+    image: postgres:9.6
+    environment:
+      - POSTGRES_PASSWORD=1231235
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+volumes: 
+  drupal-data:
+  postgres-data: 
